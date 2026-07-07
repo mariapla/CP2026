@@ -52,5 +52,5 @@ function limpiarTodo(){
     document.getElementById('pantalla').value = ''
     document.getElementById('comentario').innerHTML = ''
 
-    // document.body.classList.remove('fiesta')
+    document.body.classList.remove('fiesta')
 }
