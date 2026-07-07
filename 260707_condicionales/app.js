@@ -74,7 +74,7 @@ function calcularPrecio() {
     } else if (edadEntradas >= 18 && edadEntradas <= 64) {
         precioEntrada = 7
     } else {
-        precioEntrada = 5
+        precioEntrada = 5 
     }
 
     let precioTotal = precioEntrada * numEntradas
