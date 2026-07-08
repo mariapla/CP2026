@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
-*{
+* {
     font-family: "Montserrat", sans-serif;
     margin: 0;
     box-sizing: border-box;
@@ -17,12 +17,18 @@
     --blanco: #ffffff;
 }
 
-body{
+body {
     min-height: 100vh;
+    background:
+        radial-gradient(circle at 10% 20%, rgba(255, 43, 214, 0.18), transparent 18em),
+        radial-gradient(circle at 85% 15%, rgba(0, 229, 255, 0.22), transparent 20em),
+        radial-gradient(circle at 80% 80%, rgba(182, 255, 0, 0.18), transparent 18em),
+        linear-gradient(135deg, #fff8ff, #f4fffb);
     color: var(--texto);
 }
 
-header, .hero{
+header,
+.hero {
     min-height: 90vh;
     padding: 3em 6%;
     display: flex;
@@ -33,7 +39,7 @@ header, .hero{
     overflow: hidden;
 }
 
-.hero::before{
+.hero::before {
     content: "";
     position: absolute;
     width: 16em;
@@ -47,7 +53,7 @@ header, .hero{
     z-index: -1;
 }
 
-.hero::after{
+.hero::after {
     content: "";
     position: absolute;
     width: 12em;
@@ -59,4 +65,324 @@ header, .hero{
     left: 8%;
     filter: blur(1.8em);
     z-index: -1;
+}
+
+/* CONTENIDO HERO */
+
+.hero-content {
+    max-width: 38em;
+}
+
+.etiqueta {
+    display: inline-block;
+    padding: 0.5em 1em;
+    border: 0.12em solid var(--azul-neon);
+    border-radius: 999em;
+    color: var(--texto);
+    background: rgba(255, 255, 255, 0.7);
+    box-shadow:
+        0 0 0.7em rgba(0, 229, 255, 0.8),
+        inset 0 0 0.8em rgba(0, 229, 255, 0.25);
+    font-size: 0.9em;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+}
+
+h1 {
+    margin: 0.3em 0;
+    font-size: clamp(3em, 8vw, 6.8em);
+    line-height: 0.9;
+    text-transform: uppercase;
+    color: var(--texto);
+    text-shadow:
+        0.04em 0.04em 0 var(--verde-fluor),
+        0.08em 0.08em 0 var(--rosa-neon);
+}
+
+h1 span,
+.molones {
+    color: var(--rosa-neon);
+    text-shadow:
+        0 0 0.18em rgba(255, 43, 214, 0.7),
+        0.05em 0.05em 0 var(--amarillo-fluor);
+}
+
+.claim,
+.subtitulo {
+    font-size: 1.35em;
+    line-height: 1.5;
+    max-width: 28em;
+    color: #312857;
+}
+
+
+
+/* CÍRCULO GRANDE */
+
+.circulo-hero,
+.circulo {
+    width: 18em;
+    height: 18em;
+    border-radius: 50%;
+    background:
+        radial-gradient(circle at 30% 25%, #ffffff, transparent 12%),
+        conic-gradient(
+            from 90deg,
+            var(--rosa-neon),
+            var(--amarillo-fluor),
+            var(--verde-fluor),
+            var(--azul-neon),
+            var(--lila-neon),
+            var(--rosa-neon)
+        );
+    border: 0.35em solid white;
+    box-shadow:
+        0 0 1em var(--rosa-neon),
+        0 0 2em var(--azul-neon),
+        0 0 3em rgba(182, 255, 0, 0.6);
+    position: relative;
+    animation: flotar 3s ease-in-out infinite, girar 10s linear infinite;
+}
+
+.circulo-hero::before,
+.circulo::before {
+    content: "";
+    position: absolute;
+    inset: -1em;
+    border-radius: 50%;
+    border: 0.15em dashed var(--azul-neon);
+    animation: girar 8s linear infinite reverse;
+}
+
+.circulo-hero::after,
+.circulo::after {
+    content: "";
+    position: absolute;
+    inset: 2em;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.22);
+    border: 0.12em solid rgba(255, 255, 255, 0.9);
+}
+
+
+/* BOTONES */
+
+button,
+.boton-principal {
+    padding: 0.9em 1.5em;
+    border: 0.15em solid var(--texto);
+    border-radius: 999em;
+    background: linear-gradient(90deg, var(--rosa-neon), var(--amarillo-fluor), var(--azul-neon));
+    color: var(--texto);
+    font-size: 1em;
+    font-weight: 900;
+    text-transform: uppercase;
+    cursor: pointer;
+    box-shadow:
+        0.25em 0.25em 0 var(--texto),
+        0 0 1em rgba(255, 43, 214, 0.7);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+button:hover,
+.boton-principal:hover {
+    transform: translate(-0.15em, -0.15em);
+    box-shadow:
+        0.4em 0.4em 0 var(--texto),
+        0 0 1.5em rgba(0, 229, 255, 0.9);
+}
+
+button:active,
+.boton-principal:active {
+    transform: translate(0.1em, 0.1em);
+    box-shadow:
+        0.15em 0.15em 0 var(--texto),
+        0 0 0.8em rgba(255, 43, 214, 0.6);
+}
+
+/* CÍRCULO GRANDE */
+
+.circulo-hero,
+.circulo {
+    width: 18em;
+    height: 18em;
+    border-radius: 50%;
+    background:
+        radial-gradient(circle at 30% 25%, #ffffff, transparent 12%),
+        conic-gradient(
+            from 90deg,
+            var(--rosa-neon),
+            var(--amarillo-fluor),
+            var(--verde-fluor),
+            var(--azul-neon),
+            var(--lila-neon),
+            var(--rosa-neon)
+        );
+    border: 0.35em solid white;
+    box-shadow:
+        0 0 1em var(--rosa-neon),
+        0 0 2em var(--azul-neon),
+        0 0 3em rgba(182, 255, 0, 0.6);
+    position: relative;
+    animation: flotar 3s ease-in-out infinite, girar 10s linear infinite;
+}
+
+.circulo-hero::before,
+.circulo::before {
+    content: "";
+    position: absolute;
+    inset: -1em;
+    border-radius: 50%;
+    border: 0.15em dashed var(--azul-neon);
+    animation: girar 8s linear infinite reverse;
+}
+
+.circulo-hero::after,
+.circulo::after {
+    content: "";
+    position: absolute;
+    inset: 2em;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.22);
+    border: 0.12em solid rgba(255, 255, 255, 0.9);
+}
+
+/* SECCIONES */
+
+section {
+    padding: 4em 6%;
+}
+
+.intro,
+.bloque,
+.card,
+.tarjeta,
+.resultado-circulo,
+.calculadora-circulo {
+    background: rgba(255, 255, 255, 0.75);
+    border: 0.15em solid rgba(23, 17, 54, 0.15);
+    border-radius: 2em;
+    box-shadow:
+        0.6em 0.6em 0 rgba(23, 17, 54, 0.08),
+        0 0 1.5em rgba(0, 229, 255, 0.25);
+    backdrop-filter: blur(0.6em);
+}
+
+/* TARJETAS */
+
+.cards,
+.contenedor-tarjetas {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(13em, 1fr));
+    gap: 1.5em;
+}
+
+.card,
+.tarjeta {
+    padding: 2em;
+    text-align: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover,
+.tarjeta:hover {
+    transform: translateY(-0.4em) rotate(-1deg);
+    box-shadow:
+        0.7em 0.7em 0 rgba(255, 43, 214, 0.25),
+        0 0 1.8em rgba(182, 255, 0, 0.45);
+}
+
+.card h3,
+.tarjeta h3 {
+    color: var(--rosa-neon);
+    font-size: 1.4em;
+    text-shadow: 0 0 0.4em rgba(255, 43, 214, 0.5);
+}
+
+/* FORMULARIOS / INPUTS */
+
+input {
+    width: 100%;
+    padding: 0.9em 1em;
+    margin: 0.6em 0;
+    border: 0.15em solid var(--azul-neon);
+    border-radius: 1em;
+    background: white;
+    color: var(--texto);
+    font-size: 1em;
+    outline: none;
+    box-shadow: 0 0 0.7em rgba(0, 229, 255, 0.25);
+}
+
+input:focus {
+    border-color: var(--rosa-neon);
+    box-shadow:
+        0 0 0.9em rgba(255, 43, 214, 0.6),
+        0 0 1.5em rgba(0, 229, 255, 0.35);
+}
+
+/* RESULTADOS */
+
+.resultado-circulo,
+#resultado-circulo,
+#resultado {
+    margin-top: 1.5em;
+    padding: 1.5em;
+    font-size: 1.2em;
+    border-radius: 1.5em;
+    background:
+        linear-gradient(135deg, rgba(255, 43, 214, 0.12), rgba(0, 229, 255, 0.12)),
+        white;
+}
+
+.resultado-circulo strong,
+#resultado-circulo strong,
+#resultado strong {
+    color: var(--rosa-neon);
+    font-size: 1.6em;
+    text-shadow: 0 0 0.3em rgba(255, 43, 214, 0.5);
+}
+
+/* DETALLES FLÚOR */
+
+.neon-linea {
+    width: 8em;
+    height: 0.4em;
+    border-radius: 999em;
+    background: linear-gradient(90deg, var(--rosa-neon), var(--amarillo-fluor), var(--azul-neon));
+    box-shadow: 0 0 0.8em rgba(255, 43, 214, 0.8);
+}
+
+.destacado {
+    color: var(--verde-fluor);
+    text-shadow:
+        0 0 0.25em rgba(182, 255, 0, 0.8),
+        0.04em 0.04em 0 var(--texto);
+}
+
+/* ANIMACIONES */
+
+@keyframes flotar {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-1em);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes girar {
+    from {
+        rotate: 0deg;
+    }
+
+    to {
+        rotate: 360deg;
+    }
 }
