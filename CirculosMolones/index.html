@@ -115,12 +115,16 @@
                     <label for="cantidad">Número de círculos:</label>
                     <input type="number" id="cantidad" min="1" value="1">
 
-                    <button onclick="calcularPedido()">Calcular pedido</button>
+                    <button id="boton-calcular">Calcular pedido</button>
                 </div>
 
-                <p id="resultado-pedido" class="resultado-pedido">
+                <div id="resultado-pedido" class="resultado-pedido">
                     Aquí aparecerá el precio final de tu pedido.
-                </p>
+                </div>
+
+                <div id="lista-circulos" class="lista-circulos">
+                    Aquí aparecerán los círculos preparados para tu pedido.
+                </div>
             </div>
         </section>
 
