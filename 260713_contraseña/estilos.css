@@ -1,0 +1,21 @@
+
+
+body {
+    padding: 1em;
+    width: 50%;
+    margin: 1em auto;
+}
+
+input,
+button {
+    margin: 1em;
+}
+
+input, label, button, p, span {
+    font-size: 1.5em;
+}
+
+span {
+    color: crimson;
+    font-weight: bold;
+}
