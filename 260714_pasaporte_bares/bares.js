@@ -95,3 +95,108 @@ const bares = [
         visitado: false
     }
 ]
+
+// Acceso y saludo
+const btnEntrar = document.getElementById('btnEntrar')
+
+function obtenerNombreUsuario() {
+    const nombre = document.getElementById('nombre').value
+    return nombre
+}
+
+function nombreValido(nombre) {
+    if (nombre.trim() === '') {
+        return false
+    } else {
+        return true
+    }
+}
+
+function mostrarSaludo(nombre) {
+    const saludo = document.getElementById('saludo')
+    saludo.textContent = `Hola ${nombre}`
+}
+
+btnEntrar.addEventListener('click', function () {
+    const nombre = obtenerNombreUsuario()
+    if (nombreValido(nombre) === false) {
+        document.getElementById('mensajeAcceso').textContent = '¡Introduce tu nombre!'
+        return
+    }
+    document.getElementById('mensajeAcceso').textContent = ''
+    mostrarSaludo(nombre)
+
+    document.getElementById('acceso').style.display = 'none'
+    document.getElementById('pasaporte').style.display = 'block'
+
+    mostrarBares()
+})
+
+// Gestionamos los bares
+
+function buscarBarPorId(idBar) {
+    for (let i = 0; i < bares.length; i++) {
+        if (bares[i].id === idBar) {
+            return bares[i]
+        }
+    }
+    return null
+}
+
+function sellarBar(idBar) {
+    const bar = buscarBarPorId(idBar)
+
+    if (bar === null) {
+        return 'No se ha encontrado el bar'
+    }
+
+    if (bar.visitado === true) {
+        return 'Este bar ya estaba sellado'
+    }
+
+    bar.visitado = true
+    return `Has sellado tu visita en ${bar.nombre}`
+}
+
+// función para mostrar los bares
+function mostrarBares() {
+    const listaBares = document.getElementById('listaBares')
+    listaBares.innerHTML = ''
+    for (let i = 0; i < bares.length; i++) {
+        const tarjeta = document.createElement('article')
+        const numero = document.createElement('p')
+        const nombre = document.createElement('h3')
+        const estado = document.createElement('p')
+        const boton = document.createElement('button')
+
+        tarjeta.classList.add('bar') //pendiente
+        numero.classList.add('numero-bar') //pendiente
+        estado.classList.add('estado') //pendiente
+
+        numero.textContent = `Parada ${bares[i].id}`
+        nombre.textContent = bares[i].nombre
+
+        if (bares[i].visitado === true) {
+            estado.textContent = 'Visita sellada'
+            boton.textContent = 'Ya sellado'
+            boton.disabled = true
+            tarjeta.classList.add('bar-visitado')
+        } else {
+            estado.textContent = ' Pendiente'
+            boton.textContent = 'Sellar visita'
+        }
+
+        boton.addEventListener('click', function () {
+            const mensaje = sellarBar(bares[i].id)
+            document.getElementById('mensajeSello').textContent = mensaje
+            mostrarBares()
+        })
+
+        tarjeta.appendChild(numero)
+        tarjeta.appendChild(nombre)
+        tarjeta.appendChild(estado)
+        tarjeta.appendChild(boton)
+
+        listaBares.appendChild(tarjeta)
+    }
+}
