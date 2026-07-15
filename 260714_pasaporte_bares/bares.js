@@ -129,7 +129,8 @@ btnEntrar.addEventListener('click', function () {
     document.getElementById('acceso').style.display = 'none'
     document.getElementById('pasaporte').style.display = 'block'
 
-    mostrarBares()
+    // mostrarBares() 
+    actualizarAplicacion()
 })
 
 // Gestionamos los bares
@@ -169,9 +170,9 @@ function mostrarBares() {
         const estado = document.createElement('p')
         const boton = document.createElement('button')
 
-        tarjeta.classList.add('bar') //pendiente
-        numero.classList.add('numero-bar') //pendiente
-        estado.classList.add('estado') //pendiente
+        tarjeta.classList.add('bar') 
+        numero.classList.add('numero-bar') 
+        estado.classList.add('estado') 
 
         numero.textContent = `Parada ${bares[i].id}`
         nombre.textContent = bares[i].nombre
@@ -189,7 +190,7 @@ function mostrarBares() {
         boton.addEventListener('click', function () {
             const mensaje = sellarBar(bares[i].id)
             document.getElementById('mensajeSello').textContent = mensaje
-            mostrarBares()
+            actualizarAplicacion()
         })
 
         tarjeta.appendChild(numero)
@@ -199,4 +200,69 @@ function mostrarBares() {
 
         listaBares.appendChild(tarjeta)
     }
+}
+
+// Gestión del estado
+
+function contarBaresVisitados(){
+    let contador = 0
+
+    for(let i = 0; i < bares.length; i++){
+        if(bares[i].visitado === true){
+            contador++
+        }
+    }
+    return contador
+}
+
+
+
+function calcularPorcentaje(visitados, total){
+    const porcentaje = (visitados/total)*100
+    return Math.round(porcentaje)
+}
+
+function crearMensajeProgreso(visitados, total){
+    const porcentaje = calcularPorcentaje(visitados, total)
+    const mensaje = `Has visitado ${visitados} bares, de un total de ${total} bares. Tu progreso es de un ${porcentaje}%`
+    return mensaje
+}
+
+function mostrarProgreso(){
+    const visitados = contarBaresVisitados()
+    const total = bares.length
+    const mensaje = crearMensajeProgreso(visitados, total)
+    document.getElementById('progreso').textContent = mensaje
+}
+
+function comprobarPasaporteCompleto(){
+    const visitados = contarBaresVisitados()
+    const total = bares.length
+
+    if(visitados === total){
+        return '¡Pasaporte completo!'
+    }
+
+    const pendientes = total - visitados
+    return `Te faltan ${pendientes} bares por visitar.`
+}
+
+function mostrarEstadoPasaporte(){
+    const mensaje = comprobarPasaporteCompleto()
+    document.getElementById('estadoPasaporte').textContent = mensaje
+}
+
+function actualizarBarraProgreso(){
+    const visitados = contarBaresVisitados()
+    const porcentaje = calcularPorcentaje(visitados, bares.length)
+    document.querySelector('.barraProgreso').style.width = `${porcentaje}%`
+}
+
+
+
+function actualizarAplicacion(){
+    mostrarBares()
+    mostrarProgreso()
+    mostrarEstadoPasaporte()
+    actualizarBarraProgreso()
 }
