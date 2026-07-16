@@ -1,0 +1,141 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 2em;
+  font-family: Verdana, Geneva, Tahoma, sans-serif, sans-serif;
+  background-color: #f5f2ff;
+  color: #211c35;
+}
+
+header {
+  max-width: 68em;
+  margin: 0 auto 2.5em;
+}
+
+header h1 {
+  margin: 0;
+  font-size: clamp(3em, 8vw, 6em);
+  line-height: 0.9;
+}
+
+header p {
+  max-width: 35em;
+  font-size: 1.1em;
+}
+
+.miniTitulo {
+  margin-bottom: 0.5em;
+  font-size: 0.9em;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+}
+
+#listaPlanes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2em;
+  max-width: 68em;
+  margin: auto;
+}
+
+.tarjeta {
+  flex: 1 1 18em;
+  overflow: hidden;
+  border: 0.15em solid #211c35;
+  border-radius: 1.5em;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0.5em 0.5em 0 #fa08d2;
+}
+
+.contenedorImagen {
+  position: relative;
+  height: 14em;
+  overflow: hidden;
+  border-bottom: 0.15em solid #211c35;
+}
+
+.contenedorImagen img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.icono {
+  position: absolute;
+  right: 0.5em;
+  bottom: 0.5em;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 2.2em;
+  height: 2.2em;
+
+  border: 0.08em solid #211c35;
+  border-radius: 50%;
+
+  background-color: #fffd85;
+
+  font-size: 2em;
+}
+.icono {
+  position: absolute;
+  right: 0.5em;
+  bottom: 0.5em;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 2.2em;
+  height: 2.2em;
+
+  border: 0.08em solid #211c35;
+  border-radius: 50%;
+
+  background-color: #fffd85;
+
+  font-size: 2em;
+}
+.contenidoTarjeta {
+  padding: 1.4em;
+}
+
+.contenidoTarjeta h2 {
+  margin: 0.3em 0 0.8em;
+  font-size: 1.7em;
+}
+
+.categoria {
+  display: inline-block;
+  margin: 0;
+  padding: 0.4em 0.7em;
+  border-radius: 2em;
+  background-color: #fa08d2;
+  font-size: 0.85em;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: ghostwhite;
+}
+.estado {
+  display: inline-block;
+  margin-bottom: 0;
+  padding: 0.5em 0.8em;
+  border: 0.1em solid #211c35;
+  border-radius: 2em;
+  font-weight: bold;
+}
+
+.disponible {
+  background-color: #b8ff6a;
+}
+
+.reservado {
+  background-color: #ff8fab;
+}
+

@@ -63,7 +63,7 @@ for (let plan of planes) {
    <h2>${plan.nombre} ${plan.icono}</h2>
    <p>Lugar: ${plan.lugar}</p>
    <p>Precio: ${plan.precio}</p>
-   <p>${mensajeEstado}</p>
+   <p class='estado ${claseEstado}'>${mensajeEstado}</p>
    </div>
    </article>
    `
