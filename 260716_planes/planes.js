@@ -40,18 +40,30 @@ let planes = [
 
 const listaPlanes = document.getElementById('listaPlanes')
 
-for (let plan of planes) {
-    let mensajeEstado
-    let claseEstado
-    if(plan.reservado === true){
-        mensajeEstado = 'Ya está reservado'
-        claseEstado = 'reservado'
-    } else {
-        mensajeEstado = 'Plan disponible'
-        claseEstado = 'disponible'
-    }
+function mostrarPlanes() {
+    listaPlanes.innerHTML = ''
+    for (let i = 0; i < planes.length; i++) {
+        // for (let plan of planes) {
+        let plan = planes[i]  //necesito esta variable desde que cambio la definición del bucle
+        let mensajeEstado
+        let claseEstado
+        if (plan.reservado === true) {
+            mensajeEstado = 'Ya está reservado'
+            claseEstado = 'reservado'
+        } else {
+            mensajeEstado = 'Plan disponible'
+            claseEstado = 'disponible'
+        }
 
-    listaPlanes.innerHTML += `
+        // poner "gratis" cuando el precio es cero
+        let textoPrecio
+        if (plan.precio === 0) {
+            textoPrecio = 'Gratis'
+        } else {
+            textoPrecio = `${plan.precio} €`
+        }
+
+        listaPlanes.innerHTML += `
    <article class='tarjeta'>
    <div class='contenedorImagen'>
    <img src=${plan.imagen} alt='${plan.nombre}'>
@@ -62,10 +74,42 @@ for (let plan of planes) {
    <p class='categoria'>${plan.categoría}</p>
    <h2>${plan.nombre} ${plan.icono}</h2>
    <p>Lugar: ${plan.lugar}</p>
-   <p>Precio: ${plan.precio}</p>
+   <p>Precio: ${textoPrecio}</p>
    <p class='estado ${claseEstado}'>${mensajeEstado}</p>
+   <button class='btnReservar' data-indice='${i}'>Cambiar reserva</button>
    </div>
    </article>
    `
+    }
+
+    let botonesReservar = document.querySelectorAll('.btnReservar')
+
+    for (let boton of botonesReservar) {
+        boton.addEventListener('click', cambiarReserva)
+    }
 }
+
+function cambiarReserva(ev) {
+    let indice = ev.target.dataset.indice
+    // console.log(indice)
+    planes[indice].reservado = !planes[indice].reservado
+
+    mostrarPlanes()
+}
+
+
+planes.push({
+    nombre: 'Beer Pong',
+    lugar: 'Playa',
+    precio: 'lo que te valga la cerveza',
+    categoría: 'Deporte',
+    icono: '🍺',
+    imagen: 'img/beerpong.jpg',
+    reservado: false
+}
+)
+
+mostrarPlanes()
+
+
 
