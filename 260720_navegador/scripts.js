@@ -11,12 +11,17 @@ let estadoConexion = document.getElementById('estadoConexion')
 let paginaActual = document.getElementById('paginaActual')
 paginaActual.textContent = location.pathname
 
+let btnTitulo = document.getElementById('btnTitulo')
+let btnModo = document.getElementById('btnModo')
+
 // Listeners
 
 btnNombre.addEventListener('click', identificarUsuario)
 window.addEventListener('resize', actualizarTamaño)
 window.addEventListener('online', actualizarConexion)
 window.addEventListener('offline', actualizarConexion)
+btnTitulo.addEventListener('click', cambiarTitulo)
+btnModo.addEventListener('click', cambiarModo)
 
 function identificarUsuario() {
     // alert('hola')
@@ -39,6 +44,23 @@ function actualizarConexion(){
     } else {
         estadoConexion.textContent = 'Sin conexión'
     }
+}
+
+function cambiarTitulo(){
+    let nuevoTitulo = prompt('Escribe un título para la pestaña')
+    if(nuevoTitulo !== null && nuevoTitulo !== ''){
+        document.title = nuevoTitulo
+    }
+}
+
+function cambiarModo(){
+    document.body.classList.toggle('modoNocturno')
+    if(document.body.classList.contains('modoNocturno')){
+        btnModo.textContent = 'Modo claro'
+    } else {
+        btnModo.textContent = 'Modo oscuro'
+    }
+
 }
 
 actualizarTamaño()
