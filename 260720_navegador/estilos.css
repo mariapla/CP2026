@@ -24,7 +24,7 @@ body {
 
 body.modoNocturno {
     --fondo: #171521;
-    --panel:#272337;
+    --panel: #272337;
     --texto: ghostwhite;
     --borde: ghostwhite;
 }
@@ -63,6 +63,7 @@ button {
     color: var(--texto);
     font-weight: bold;
     cursor: pointer;
+    margin-bottom: 1em;
 }
 
 button:hover {
@@ -71,8 +72,9 @@ button:hover {
 }
 
 main {
-    width: min(70em, 100%);
-    margin: 2em auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
 
 }
 
@@ -121,7 +123,7 @@ main {
 }
 
 .dato:nth-child(4) {
-    background-color:#d7c2ff;
+    background-color: #d7c2ff;
 }
 
 .dato h3 {
@@ -135,14 +137,86 @@ main {
     overflow-wrap: anywhere;
 }
 
-.acciones{
+.acciones {
     display: flex;
     flex-wrap: wrap;
     gap: 1em;
     margin-top: 2em;
 }
 
-#notificaciones.visible{
+#notificaciones{
+    margin-top: 1em;
+    font-size: 1.5em;
+}
+#notificaciones.visible {
     opacity: 1;
-    
+    transform: translateY(0);
+}
+
+.formularioMensajes {
+    display: flex;
+    gap: 1em;
+}
+
+.formularioMensajes input {
+    flex: 1;
+    min-width: 0;
+    padding: 0.9em 1em;
+    border: 0.12em solid var(--borde);
+    border-radius: 2em;
+
+}
+
+body.modoNocturno .formularioMensaje input {
+    background-color: #171521;
+    color: ghostwhite;
+}
+
+#listaMensajes {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8em;
+    margin-top: 1.5em;
+}
+
+.mensaje {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1em;
+    /* padding: 1em 1.2em;
+    border: 0.12em solid var(--borde);
+    border-radius: 1em;
+    background-color: #fff4c1; */
+}
+
+.mensaje p {
+    margin: 0;
+
+}
+
+body.modoNocturno .mensaje {
+    background-color: #202020;
+}
+
+.btnEliminar {
+    padding: 0.5em 0.8em;
+    background-color: var(--aviso);
+}
+
+#notificacion {
+    position: fixed;
+
+    right: 2em;
+    bottom: 2em;
+    padding: 1em 1.4em;
+    border: 0.12em solid var(--borde);
+    border-radius: 2em;
+    background-color: var(--primario);
+    color: #202020;
+    font-weight: bold;
+    opacity: 0;
+    transform: translateY(2em);
+    pointer-events: none;
+    transition: 0.3s;
 }
