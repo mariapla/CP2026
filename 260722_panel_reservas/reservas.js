@@ -38,17 +38,18 @@ btnReserva.addEventListener('mouseleave', () => {
 btnReserva.addEventListener('click', () => {
     reservado = !reservado
     if (reservado) {
-        plazasDisponibles--
+        // plazasDisponibles-- Pasamos esta instrucción al submit. Dejamos el botón como una reserva en proceso
         btnReserva.textContent = 'Reservado'
-        mensajeReserva.textContent = 'Reserva realizada'
+        // mensajeReserva.textContent = 'Reserva realizada'
+        mensajeReserva.textContent = 'Reserva iniciada, completa tus datos'
         mensajeReserva.classList.add('reservada')
     } else {
-        plazasDisponibles++
+        // plazasDisponibles++ Pasamos la instrucción al submit
         btnReserva.textContent = 'Disponible'
         mensajeReserva.textContent = 'Reserva cancelada'
         mensajeReserva.classList.remove('reservada')
     }
-    numeroPlazas.textContent = plazasDisponibles
+    // numeroPlazas.textContent = plazasDisponibles - Esto ya no se va a actualizar aquí
 })
 
 campoNombre.addEventListener('focus', () => {
@@ -106,6 +107,8 @@ formularioReserva.addEventListener('submit', (e)=>{
         resultadoFormulario.classList.remove('correcto')
         return
     }
+    plazasDisponibles-- //Añadido a posteriori para modificar el funcionamiento
+    numeroPlazas.textContent = plazasDisponibles //Añadido a posteriori
     resultadoFormulario.textContent = `Reserva confirmada para ${nombre} en el turno de ${turno}`
     resultadoFormulario.classList.remove('error')
     resultadoFormulario.classList.add('correcto')
@@ -125,6 +128,10 @@ formularioReserva.addEventListener('submit', (e)=>{
     formularioReserva.reset()
     contadorCaracteres = '0'
     mensajeNombre.textContent = '' 
+    //añadido a posteriori para arreglar el error de concepto:
+    reservado = false
+    btnReserva.textContent = ' Disponible'
+    actividad.classList.remove('reservada')
 })
 
 document.addEventListener('keydown', (e)=>{
