@@ -1,3 +1,17 @@
 .reservada{
     background-color: rgb(179, 242, 179);
 }
+
+.campo-activo{
+    background-color: aquamarine;
+}
+
+.error {
+    color: crimson;
+    font-weight: bold;
+}
+
+.correcto{
+    color: green;
+     font-weight: bold;
+}
