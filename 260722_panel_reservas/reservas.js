@@ -109,6 +109,7 @@ formularioReserva.addEventListener('submit', (e)=>{
         return
     }
     plazasDisponibles-- //Añadido a posteriori para modificar el funcionamiento
+    
     numeroPlazas.textContent = plazasDisponibles //Añadido a posteriori
     resultadoFormulario.textContent = `Reserva confirmada para ${nombre} en el turno de ${turno}`
     resultadoFormulario.classList.remove('error')
