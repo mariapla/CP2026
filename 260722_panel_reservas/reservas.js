@@ -10,7 +10,7 @@ const campoNombre = document.getElementById('nombre')
 const mensajeNombre = document.getElementById('mensajeNombre')
 const selectorTurno = document.getElementById('turno')
 const comentario = document.getElementById('comentario')
-const contadorCaracteres = document.getElementById('contadorCaracteres')
+let contadorCaracteres = document.getElementById('contadorCaracteres')
 const resultadoFormulario = document.getElementById('resultadoFormulario')
 
 const listaParticipantes = document.getElementById('listaParticipantes')
@@ -21,32 +21,33 @@ let plazasDisponibles = 5
 // Listeners
 btnReserva.addEventListener('mouseenter', () => {
     if (reservado) {
-        btnReserva.textContent = 'Cancelar Reserva'
+        btnReserva.textContent = 'Cancelar Pre-Reserva'
     } else {
-        btnReserva.textContent = 'Reservar'
+        btnReserva.textContent = 'Pre-Reservar'
     }
 })
 
 btnReserva.addEventListener('mouseleave', () => {
     if (reservado) {
-        btnReserva.textContent = 'Reservado'
+        btnReserva.textContent = 'Pre-Reservado'
     } else {
         btnReserva.textContent = 'Disponible'
     }
 })
 
-btnReserva.addEventListener('click', () => {
+btnReserva.addEventListener('click', (e) => {
+    e.stopPropagation()
     reservado = !reservado
     if (reservado) {
         // plazasDisponibles-- Pasamos esta instrucción al submit. Dejamos el botón como una reserva en proceso
-        btnReserva.textContent = 'Reservado'
+        btnReserva.textContent = 'Pre-Reservado'
         // mensajeReserva.textContent = 'Reserva realizada'
-        mensajeReserva.textContent = 'Reserva iniciada, completa tus datos'
+        mensajeReserva.textContent = 'Pre-Reserva iniciada, completa tus datos'
         mensajeReserva.classList.add('reservada')
     } else {
         // plazasDisponibles++ Pasamos la instrucción al submit
         btnReserva.textContent = 'Disponible'
-        mensajeReserva.textContent = 'Reserva cancelada'
+        mensajeReserva.textContent = 'Pre-Reserva cancelada'
         mensajeReserva.classList.remove('reservada')
     }
     // numeroPlazas.textContent = plazasDisponibles - Esto ya no se va a actualizar aquí
@@ -140,4 +141,26 @@ document.addEventListener('keydown', (e)=>{
         mensajeReserva.textContent = ''
         resultadoFormulario.textContent = ''
     }
+})
+
+//Delegación de eventos
+listaParticipantes.addEventListener('click', (e)=>{
+    // console.log(e.target)
+    if(e.target.classList.contains('btnEliminar')){
+        // console.log('Has pulsado Eliminar')
+        e.target.parentElement.remove()
+        plazasDisponibles++
+        numeroPlazas.textContent = plazasDisponibles
+    }
+    const participantes = listaParticipantes.querySelectorAll('.participante')
+    if(participantes.length === 0){
+        listaParticipantes.innerHTML = `<p class="aviso">Todavía no hay participantes</p>`
+    }
+})
+
+
+//Propagación
+actividad.addEventListener('click', (e)=>{
+    console.log("Target:", e.target )
+    console.log("Current target:", e.currentTarget)
 })
