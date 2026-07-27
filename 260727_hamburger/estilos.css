@@ -59,3 +59,59 @@ nav{
     padding: 1em;
     background-color: aquamarine;
 }
+
+.cajaAnimada{
+    width: 50px;
+    height: 50px;
+    background-color: crimson;
+    margin: 1em;
+}
+
+.escalar{
+    transform: scale(1.5);
+}
+
+.rotar{
+    transform: rotate(20deg);
+}
+
+.opacidad{
+    opacity: 0.5;
+}
+
+.redondear{
+    border-radius: 50%;
+}
+
+.combo {
+    transform: scale(1.5) rotate(20deg);
+    background-color: orange;
+    opacity: 0.5;
+    border-radius: 50%;
+}
+
+@media (min-width: 700px){
+    #burger, #salir{
+        display: none;
+    }
+
+    .navbar nav{
+        display: block;
+        position: static;
+        width: auto;
+        height: auto;
+        padding: 0;
+        background: none;
+    }
+
+    .navbar ul{
+        display: flex;
+        justify-content: flex-end;
+        gap: 2em;
+        margin: 0;
+    }
+
+    .navbar ul li{
+        margin: 0;
+    }
+}
