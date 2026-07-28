@@ -69,14 +69,7 @@ btnReset.addEventListener('click', () => {
     cajaAnimada.className = 'cajaAnimada'
 })
 
-btnComienzo.addEventListener('click', ()=>{
-    movimiento = true
-    document.addEventListener('mousemove', seguirMouse)
-})
 
-btnParo.addEventListener('click', ()=>{
-
-})
 
 btnContador.addEventListener('click', iniciarContador)
 btnReseteo.addEventListener('click', detenerContador)
@@ -101,6 +94,18 @@ btnInicio.addEventListener('click', () => {
 btnStop.addEventListener('click', () => {
     clearInterval(intervaloMov)
     intervaloMov = null
+})
+
+btnComienzo.addEventListener('click', ()=>{
+    movimiento = true
+    document.addEventListener('mousemove', seguirMouse)
+})
+
+btnParo.addEventListener('click', ()=>{
+    movimiento = false
+    document.removeEventListener('mousemove', seguirMouse)
+    mosca.style.left = 0
+    mosca.style.top = 0
 })
 
 function iniciarContador() {
