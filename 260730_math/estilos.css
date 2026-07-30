@@ -1,0 +1,283 @@
+@import url(
+    'https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap'
+);
+* {
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    margin: 0;
+
+    font-family: 'Montserrat', sans-serif;
+
+    color: #202020;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fff6a5,
+            #ffb3e6,
+            #a8f7ff
+        );
+}
+
+button,
+input,
+select {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+button:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.cabecera {
+    padding: 3em 1.5em 2em;
+    text-align: center;
+}
+
+.cabecera h1 {
+    margin: 0.15em 0;
+
+    font-size: clamp(2.5em, 8vw, 5em);
+}
+
+.cabecera p {
+    max-width: 40em;
+    margin: 0.5em auto;
+}
+
+
+.etiqueta {
+    display: inline-block;
+
+    padding: 0.5em 1em;
+
+    font-size: 0.8em;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+
+    background-color: white;
+
+    border: 0.15em solid #202020;
+    border-radius: 2em;
+}
+
+
+.contenedor {
+    width: min(92%, 70em);
+    margin: 0 auto;
+    padding-bottom: 5em;
+}
+.estacion {
+    position: relative;
+
+    margin: 2em 0;
+    padding: 2em;
+
+    background-color: rgba(255, 255, 255, 0.92);
+
+    border: 0.2em solid #202020;
+    border-radius: 1.5em;
+
+    box-shadow: 0.7em 0.7em 0 #202020;
+}
+.numEstacion {
+    position: absolute;
+    top: -0.8em;
+    right: 0.5em;
+
+    font-size: 3em;
+    font-weight: 800;
+
+    color: #ff31a8;
+
+    text-shadow:
+        0.05em 0.05em 0 #202020;
+}
+.mini-titulo {
+    margin: 0;
+
+    font-size: 0.75em;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+}
+
+.estacion h2 {
+    margin: 0.2em 0 0.7em;
+
+    font-size: clamp(1.7em, 5vw, 2.7em);
+}
+  .zona-controles,
+.botonera {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: end;
+    gap: 1em;
+
+    margin: 1.5em 0;
+}
+
+.zona-controles label {
+    width: 100%;
+    font-weight: bold;
+}
+
+.zona-controles input,
+.zona-controles select {
+    min-width: 10em;
+
+    padding: 0.8em 1em;
+
+    background-color: white;
+
+    border: 0.15em solid #202020;
+    border-radius: 0.7em;
+}
+
+.boton-principal,
+.boton-secundario,
+.zona-controles button {
+    padding: 0.8em 1.2em;
+
+    border: 0.15em solid #202020;
+    border-radius: 0.7em;
+
+    font-weight: bold;
+}
+
+.boton-principal,
+.zona-controles button {
+    background-color: #d8ff36;
+    box-shadow: 0.25em 0.25em 0 #202020;
+}
+
+.boton-secundario {
+    background-color: white;
+}
+
+.boton-principal:active,
+.zona-controles button:active {
+    transform: translate(0.25em, 0.25em);
+    box-shadow: none;
+}
+  
+
+.resultadosRedondeos {
+    display: grid;
+    gap: 1em;
+}
+
+.resultadosRedondeos article {
+    padding: 1em;
+
+    text-align: center;
+
+    background-color: #f8f8f8;
+
+    border: 0.15em solid #202020;
+    border-radius: 1em;
+}
+
+.resultadosRedondeos span,
+.resultados-redondeo small {
+    display: block;
+}
+
+.resultadosRedondeos strong {
+    display: block;
+
+    margin: 0.2em 0;
+
+    font-size: 3em;
+}
+.pantalla {
+    display: grid;
+    place-items: center;
+
+    min-height: 10em;
+    margin: 1.5em 0;
+
+    overflow: hidden;
+
+    color: #d8ff36;
+    background-color: #202020;
+
+    border-radius: 1em;
+}
+
+.pantalla span {
+    padding: 0.5em;
+
+    font-family: monospace;
+    font-size: clamp(2em, 8vw, 4em);
+
+    overflow-wrap: anywhere;
+}
+.dado {
+    display: grid;
+    place-items: center;
+
+    width: 2.5em;
+    aspect-ratio: 1;
+
+    margin: 0.6em auto;
+
+    font-size: clamp(4em, 15vw, 7em);
+    font-weight: 800;
+
+    background-color: white;
+
+    border: 0.06em solid #202020;
+    border-radius: 0.25em;
+
+    box-shadow:
+        0.12em 0.12em 0 #ff31a8;
+}
+
+.dado.lanzando {
+    animation: agitar 0.15s infinite alternate;
+}
+
+@keyframes agitar {
+
+    from {
+        transform:
+            rotate(-8deg)
+            scale(0.95);
+    }
+
+    to {
+        transform:
+            rotate(8deg)
+            scale(1.05);
+    }
+
+}
+
+.mensaje {
+    min-height: 1.5em;
+    margin-top: 1em;
+
+    font-weight: bold;
+    text-align: center;
+}
+
+
+
+@media (min-width: 45em) {
+
+    .resultados-redondeo {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+}
+
