@@ -5,6 +5,15 @@ const lista = document.getElementById('lista')
 const mensajes = document.getElementById('mensajes')
 let deseos = []
 
+
+let deseosGuardados = localStorage.getItem('deseos')
+
+if (deseosGuardados !== null) {
+    deseos = JSON.parse(deseosGuardados)
+}
+
+
+
 const btnBuscar = document.getElementById('btnBuscar')
 const inputBusqueda = document.getElementById('busqueda')
 
@@ -12,9 +21,11 @@ const origen = document.getElementById('origen')
 const nuevo = document.getElementById('nuevo')
 const btnEditar = document.getElementById('btnEditar')
 
+mostrarDeseos()
+
 //listeners
 btnAñadir.addEventListener('click', () => {
-    
+
     const deseo = inputDeseo.value.trim()
     inputDeseo.value = ''
     if (deseo.length === 0) {
@@ -23,19 +34,19 @@ btnAñadir.addEventListener('click', () => {
     }
 
     //verificar si el elemento está ya en el array (o no)
-    if(deseos.includes(deseo)){
+    if (deseos.includes(deseo)) {
         mensajes.textContent = 'Esto lo deseas mucho...'
         return
     }
 
     mensajes.textContent = ''
     deseos.push(deseo)
-    console.log(deseos)
+
     mostrarDeseos()
 })
 
 btnUrgente.addEventListener('click', () => {
-    
+
     const deseo = inputDeseo.value.trim()
     inputDeseo.value = ''
     if (deseo.length === 0) {
@@ -44,32 +55,33 @@ btnUrgente.addEventListener('click', () => {
     }
 
     //verificar si el elemento está ya en el array (o no)
-    if(deseos.includes(deseo)){
+    if (deseos.includes(deseo)) {
         mensajes.textContent = 'Esto lo deseas mucho...'
         return
     }
 
     mensajes.textContent = ''
     deseos.unshift(deseo)
-   mostrarDeseos()
+
+    mostrarDeseos()
 })
 
-btnBuscar.addEventListener('click', ()=>{
+btnBuscar.addEventListener('click', () => {
     const texto = inputBusqueda.value.trim()
     const posicion = deseos.indexOf(texto)
-    if(posicion === -1){
+    if (posicion === -1) {
         mensajes.textContent = 'Tú no tienes este deseo'
     } else {
-        mensajes.textContent = `Tu deseo està en la posición ${posicion+1} y en el índice ${posicion} `
+        mensajes.textContent = `Tu deseo està en la posición ${posicion + 1} y en el índice ${posicion} `
     }
 })
 
-btnEditar.addEventListener('click', ()=>{
+btnEditar.addEventListener('click', () => {
     const textoOriginal = origen.value.trim()
     const textoNuevo = nuevo.value.trim()
 
     const posicion = deseos.indexOf(textoOriginal)
-    if(posicion === -1){
+    if (posicion === -1) {
         mensajes.textContent = 'Tú nunca has deseado esto...'
         return
     }
@@ -88,5 +100,7 @@ function mostrarDeseos() {
         li.textContent = deseos[i]
         lista.appendChild(li)
     }
+
+    localStorage.setItem('deseos', JSON.stringify(deseos))
 
 }
